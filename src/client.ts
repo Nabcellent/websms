@@ -33,14 +33,6 @@ export class WebSms {
         return http[method](url, data).then(({ data }) => {
             log.info('...[LIB WEBSMS] - RES:', { url, method, data })
 
-            if (data.ErrorCode !== 0) {
-                if ([4, 5, 13, 15, 19, 20].includes(data.ErrorCode)) {
-                    throw new ValidationErr(data.ErrorDescription)
-                }
-
-                throw new BadRequestError(data.ErrorDescription)
-            }
-
             return data
         }).catch(e => {
             log.error(`...[LIB WEBSMS] - ERR:`, { error: e })
@@ -55,10 +47,6 @@ export class WebSms {
                 if (e.response?.status === 404) {
                     throw new NotFoundError()
                 }
-            } else if (e instanceof ValidationErr) {
-                throw new ValidationErr(e.errors)
-            } else if (e instanceof BadRequestError) {
-                throw new BadRequestError(e.message)
             }
 
             throw new BadRequestError(e.message || 'Something went wrong')
