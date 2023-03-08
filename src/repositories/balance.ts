@@ -7,14 +7,20 @@ export class Balance {
         this.client = client;
     }
 
-    public async fetch() {
-        const { data } = await this.client.http.get("/Balance", {
-            params: {
-                ApiKey: this.client.config.apiKey,
-                ClientId: this.client.config.clientId,
+    public async fetch(pluginType: 'SMS' = 'SMS'): Promise<number> {
+        const { Data } = await this.client.makeRequest({
+            url: '/Balance',
+            method: 'get',
+            data: {
+                params: {
+                    ApiKey: this.client.config.apiKey,
+                    ClientId: this.client.config.clientId,
+                }
             }
-        });
+        })
 
-        return data;
+        const { Credits } = Data.find((data: any) => data.PluginType === pluginType)
+
+        return Number(Number(Credits.slice(3)).toFixed(2));
     }
 }
