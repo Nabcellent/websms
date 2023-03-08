@@ -42,7 +42,7 @@ export type WebSmsResponse = {
 export type WebSmsResponseData = {
     code: number,
     description: string,
-    phone: string,
-    message_id: string,
-    custom: string
+    phone?: string,
+    message_id?: string,
+    custom?: string
 }
