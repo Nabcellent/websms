@@ -31,7 +31,7 @@ export class WebSms {
         });
 
         return http[method](url, data).then(({ data }) => {
-            log.info('...[LIB WEBSMS] - RES:', { url, method, data })
+            log.info('...[LIB WEBSMS] - RES:', { data })
 
             return data
         }).catch(e => {

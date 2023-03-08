@@ -48,17 +48,20 @@ export class SMS {
                 throw new ValidationErr('Scheduled time must be after current time.')
             }
 
-            data.ScheduleDateTime = moment(schedule).format('YYYY-MM-DD HH:mm:ss')
+            data.ScheduleDateTime = moment(schedule).format('YYYY-MM-D')
         }
 
         const res: WebSmsRawResponse = await this.#client.makeRequest({
             url: '/SendBulkSMS', data
         });
 
-        return {
+        const result: WebSmsResponse = {
             code: res.ErrorCode,
             description: res.ErrorDescription,
-            data: res.Data.map(d => ({
+        }
+
+        if (res.Data) {
+            result.data = res.Data?.map(d => ({
                 message_id: d.MessageId,
                 code: d.MessageErrorCode,
                 description: d.MessageErrorDescription,
@@ -66,5 +69,7 @@ export class SMS {
                 custom: d.Custom
             }))
         }
+
+        return result
     }
 }

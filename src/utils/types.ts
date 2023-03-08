@@ -36,7 +36,7 @@ export type WebSmsRawResponseData = {
 export type WebSmsResponse = {
     code: number,
     description: string | null
-    data: WebSmsResponseData[]
+    data?: WebSmsResponseData[]
 }
 
 export type WebSmsResponseData = {
