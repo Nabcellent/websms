@@ -3,8 +3,6 @@ name: Node.js CI
 on:
   push:
     branches: [ red.dev ]
-  pull_request:
-    branches: [ main ]
 
 jobs:
   build:
