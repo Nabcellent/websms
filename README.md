@@ -19,6 +19,8 @@
 [npmtrends]: https://www.npmtrends.com/nabcellent/websms
 [license-badge]: https://img.shields.io/npm/l/@nabcellent/websms.svg?style=flat-square
 [license]: https://github.com/nabcellent/websms/blob/main/LICENSE
+[![coverage status](https://coveralls.io/repos/github/nabcellent/websms/badge.svg?branch=master)](https://coveralls.io/github/nabcellent/websms?branch=master)
+
 
 This is a <i>Typescript</i> package that interfaces with the [WebSMS](https://websms.co.ke/) Api.
 The API enables you to initiate mobile Sms notifications.
