@@ -10,7 +10,7 @@
 
 [build-badge]: https://img.shields.io/github/actions/workflow/status/nabcellent/websms/test.yml?branch=main&logo=github&style=flat-square
 [build]: https://github.com/nabcellent/websms/actions?query=workflow%3Avalidate
-[coverage-badge]: https://img.shields.io/codecov/c/github/nabcellent/websms.svg?style=flat-square
+[coverage-badge]: https://img.shields.io/codecov/c/github/nabcellent/websms.svg?token=RFFO0GXH7B&style=flat-square
 [coverage]: https://codecov.io/gh/nabcellent/websms/
 [version-badge]: https://img.shields.io/npm/v/@nabcellent/websms.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@nabcellent/websms
