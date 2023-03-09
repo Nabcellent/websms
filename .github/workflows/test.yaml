@@ -1,15 +1,14 @@
-name: Node.js CI
+name: Test CI
 
 on:
-  pull_request: {}
   push:
     branches:
       - main
       - red.dev
+  workflow_dispatch:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
