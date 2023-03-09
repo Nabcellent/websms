@@ -10,7 +10,7 @@
 [build-badge]: https://img.shields.io/github/actions/workflow/status/nabcellent/websms/test.yml?branch=main&logo=github&style=flat-square
 [build]: https://github.com/nabcellent/websms/actions?query=workflow%3Avalidate
 [coverage-badge]: https://img.shields.io/codecov/c/github/nabcellent/websms.svg?style=flat-square
-[coverage]: https://codecov.io/github/nabcellent/websms/
+[coverage]: https://codecov.io/gh/nabcellent/websms/
 [version-badge]: https://img.shields.io/npm/v/@nabcellent/websms.svg?style=flat-square
 [package]: https://www.npmjs.com/package/@nabcellent/websms
 [minzip-badge]: https://img.shields.io/bundlephobia/minzip/@nabcellent/websms.svg?style=flat-square
@@ -19,8 +19,6 @@
 [npmtrends]: https://www.npmtrends.com/nabcellent/websms
 [license-badge]: https://img.shields.io/npm/l/@nabcellent/websms.svg?style=flat-square
 [license]: https://github.com/nabcellent/websms/blob/main/LICENSE
-[![coverage status](https://coveralls.io/repos/github/nabcellent/websms/badge.svg?branch=master)](https://coveralls.io/github/nabcellent/websms?branch=master)
-
 
 This is a <i>Typescript</i> package that interfaces with the [WebSMS](https://websms.co.ke/) Api.
 The API enables you to initiate mobile Sms notifications.
