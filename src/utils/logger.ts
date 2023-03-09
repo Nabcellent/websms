@@ -9,14 +9,14 @@ const exceptionHandlers = [
 export const log = createLogger({
     levels: config.syslog.levels,
     format: combine(
+        align(),
         colorize({ all: true }),
         timestamp({ format: 'YYYY-MM-DD hh:mm:ss.SSS A' }),
-        align(),
         printf(info => {
             const { timestamp, level, message, ...args } = info;
 
             return `${timestamp} [${level}]: ${message} ${Object.keys(args).length ? JSON.stringify(args, null, 2) : ''}`;
-        })
+        }),
     ),
     exceptionHandlers,
     transports: [

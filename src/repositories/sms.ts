@@ -2,8 +2,9 @@ import { WebSms } from '../client';
 import { ValidationErr } from "../exceptions/validation.err";
 import { WebSmsRawResponse, WebSMSRequest, WebSmsResponse } from "../utils";
 import moment, { Moment } from "moment";
+import { isValidPhoneNumber } from "libphonenumber-js";
 
-export class SMS {
+export class Sms {
     #client: WebSms;
     #message: string = "";
     #phones: (string | number)[] = [];
@@ -14,6 +15,7 @@ export class SMS {
 
     public text(message: string) {
         this.#message = message;
+
         return this;
     }
 
@@ -24,10 +26,14 @@ export class SMS {
     }
 
     public async send(schedule?: Date | Moment): Promise<WebSmsResponse> {
-        if (!this.#message) throw new ValidationErr('Please provide a message.')
-        if (this.#phones.length <= 0) throw new ValidationErr('Please provide at least one phone number.')
+        if (!this.#message) throw new ValidationErr('Text is required.')
+        if (this.#phones.length <= 0) throw new ValidationErr('Phone number is required.')
 
         const MessageParameters = this.#phones.map(phone => {
+            if(!isValidPhoneNumber(String(phone), 'KE')) {
+                throw new ValidationErr(`${phone} is an invalid Kenyan phone number.`)
+            }
+
             return {
                 Number: phone,
                 Text: this.#message
@@ -48,7 +54,7 @@ export class SMS {
                 throw new ValidationErr('Scheduled time must be after current time.')
             }
 
-            data.ScheduleDateTime = moment(schedule).format('YYYY-MM-D')
+            data.ScheduleDateTime = schedule.format('YYYY-MM-D')
         }
 
         const res: WebSmsRawResponse = await this.#client.makeRequest({

@@ -1,5 +1,5 @@
 import { Balance } from './repositories/balance';
-import { SMS } from './repositories/SMS';
+import { Sms } from './repositories/sms';
 import axios, { AxiosError } from 'axios';
 import { WebSmsConfig } from "./utils";
 import { NotFoundError } from "./exceptions/not-found.err";
@@ -11,7 +11,7 @@ import { BadRequestError } from "./exceptions/bad-request.err";
 export class WebSms {
     public config: WebSmsConfig;
     public baseUrl = process.env.WEBSMS_API_URL || 'https://api.onfonmedia.co.ke/v1/sms';
-    sms: SMS = new SMS(this)
+    sms: Sms = new Sms(this)
     balance: Balance = new Balance(this)
 
     constructor(config: WebSmsConfig) {
