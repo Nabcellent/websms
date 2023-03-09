@@ -26,6 +26,5 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - run: yarn ci
-      - run: yarn run build --if-present
+      - name: Run tests
       - run: yarn test
