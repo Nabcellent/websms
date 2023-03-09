@@ -34,3 +34,6 @@ dist-ssr
 
 y.hide
 src/server.ts
+
+/coverage
+coverage.*

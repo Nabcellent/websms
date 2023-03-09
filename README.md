@@ -2,6 +2,7 @@
 
 [![build status][build-badge]][build]
 [![code coverage][coverage-badge]][coverage]
+
 [![npm version][version-badge]][package]
 [![bundle size][minzip-badge]][bundlephobia]
 [![npm downloads][downloads-badge]][npmtrends]
