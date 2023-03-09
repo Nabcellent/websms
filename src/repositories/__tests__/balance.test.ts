@@ -4,7 +4,7 @@ import { Balance } from "../balance";
 
 let websms: WebSms, balance: Balance, makeRequest: SpyInstance;
 
-describe('sms', () => {
+describe('balance', () => {
     beforeAll(() => {
         websms = new WebSms({
             apiKey: "apiKey",
