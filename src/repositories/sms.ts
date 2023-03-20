@@ -30,7 +30,7 @@ export class Sms {
         if (this.#phones.length <= 0) throw new ValidationErr('Phone number is required.')
 
         const MessageParameters = this.#phones.map(phone => {
-            if(!isValidPhoneNumber(String(phone), 'KE')) {
+            if (!isValidPhoneNumber(String(phone), 'KE')) {
                 throw new ValidationErr(`${phone} is an invalid Kenyan phone number.`)
             }
 
@@ -72,10 +72,26 @@ export class Sms {
                 code: d.MessageErrorCode,
                 description: d.MessageErrorDescription,
                 phone: d.MobileNumber,
+                cost: this.cost(this.#message),
                 custom: d.Custom
             }))
         }
 
         return result
+    }
+
+    public cost(text: string): number {
+        console.log(`TEXT:\n"${text}"`, `\n\nLENGTH: ${text.length}`)
+
+        let cost = Number(process.env.WEBSMS_COST || .3);
+        const rawCost = (text.length * cost) / 160
+
+        if (rawCost > 0) {
+            cost = Math.ceil(rawCost / cost) * cost;
+        } else if (rawCost < 0) {
+            cost = Math.floor(rawCost / cost) * cost;
+        }
+
+        return Number(cost.toFixed(4))
     }
 }
