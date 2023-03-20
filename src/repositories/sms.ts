@@ -81,8 +81,6 @@ export class Sms {
     }
 
     public cost(text: string): number {
-        console.log(`TEXT:\n"${text}"`, `\n\nLENGTH: ${text.length}`)
-
         let cost = Number(process.env.WEBSMS_COST || .3);
         const rawCost = (text.length * cost) / 160
 
