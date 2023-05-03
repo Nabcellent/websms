@@ -1,6 +1,6 @@
 {
   "name": "@nabcellent/websms",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "license": "MIT",
   "packageManager": "yarn@3.4.1",
   "author": {
