@@ -21,6 +21,6 @@ export class Balance {
 
         const { Credits } = Data.find((data: any) => data.PluginType === pluginType)
 
-        return Number(Number(Credits.slice(3)).toFixed(2));
+        return Number(Credits);
     }
 }
