@@ -43,6 +43,7 @@ export type WebSmsResponseData = {
     code: number,
     description: string,
     phone?: string,
+    cost: number,
     message_id?: string,
     custom?: string
 }

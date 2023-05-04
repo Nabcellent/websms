@@ -22,7 +22,7 @@
 [license]: https://github.com/nabcellent/websms/blob/main/LICENSE
 
 This is a <i>Typescript</i> package that interfaces with the [WebSMS](https://websms.co.ke/) Api.
-The API enables you to initiate mobile Sms notifications.
+The API enables you to initiate mobile SMS notifications.
 
 Check out their [api documentation](https://www.docs.onfonmedia.co.ke/).
 
@@ -49,10 +49,10 @@ let config: WebSMSConfig = {
 const web = new WebSMS(config);
 ```
 
-- ### Sms
+- ### SMS
 Enables you to send text messages
 
-#### 1. Send Sms
+#### 1. Send SMS
 ```js
 const response = await web.sms.text('#WebSMSTest').to(254123456789).send()
     //  OR
@@ -81,13 +81,21 @@ const response = await web.sms.text('#WebSMSTest').to([254123456789]).send()
 }
 ```
 
-#### 2. Schedule Sms
+#### 2. Schedule SMS
 Provide a Moment or Date instance to the send method.
 ```js
 const response = await web.sms.text('#WebSMSTest').to([254123456789]).send(moment().add(1, 'm'))
 ```
 <small><i>PS: The date must be after current time.</i>🌚</small>
 
+#### 3. Calculate SMS Cost
+Provide the text message.
+```js
+const response = web.sms.cost('Hello World.')
+
+//  Expected response(number)
+0.3
+```
 ---
 
 - ### Account
