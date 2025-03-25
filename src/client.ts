@@ -5,7 +5,6 @@ import { WebSmsConfig } from "./utils";
 import { NotFoundError } from "./exceptions/not-found.err";
 import { UnauthorizedErr } from "./exceptions/unauthorized.err";
 import { ValidationErr } from "./exceptions/validation.err";
-import { log } from "./utils/logger";
 import { BadRequestError } from "./exceptions/bad-request.err";
 
 export class WebSms {
@@ -19,7 +18,7 @@ export class WebSms {
     }
 
     makeRequest = async ({ url, method = 'post', data = {} }: { url: string, method?: 'get' | 'post', data?: any }) => {
-        log.info('...[LIB WEBSMS] - REQ:', { url, method, data })
+        console.info('...[LIB WEBSMS] - REQ:', { url, method, data })
 
         const http = axios.create({
             baseURL: this.baseUrl,
@@ -31,11 +30,11 @@ export class WebSms {
         });
 
         return http[method](url, data).then(({ data }) => {
-            log.info('...[LIB WEBSMS] - RES:', { data })
+            console.info('...[LIB WEBSMS] - RES:', { data })
 
             return data
         }).catch(e => {
-            log.error(`...[LIB WEBSMS] - ERR:`, { error: e })
+            console.error(`...[LIB WEBSMS] - ERR:`, { error: e })
 
             if (e instanceof AxiosError) {
                 if (e.response?.status === 422) {
